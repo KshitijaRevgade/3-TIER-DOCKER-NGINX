@@ -1,13 +1,13 @@
-FROM centos:7
+FROM nginx
 
 LABEL Name="NGINX-APP"
 
 LABEL Author="Kshitija"
 
-RUN yum install nginx -y
+COPY ngin-start.sh /usr/local/bin/ngin-start.sh
 
-COPY index.html /var/www/html/
+COPY index.html /usr/share/nginx/html/index.html
 
-EXPOSE 80
+EXPOSE 8080
 
-CMD [ "nginx" , "-g" , "daemon off;" ]
+CMD [ "/usr/local/bin/ngin-start.sh" , "run" ]
