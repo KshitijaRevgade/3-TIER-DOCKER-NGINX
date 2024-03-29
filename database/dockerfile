@@ -1,0 +1,10 @@
+FROM mysql
+
+LABEL Name="NGINX-APP"
+LABEL Author="Kshitija"
+
+ENV MYSQL_ROOT_PASSWORD=5321
+
+COPY init-db.sql /docker-entrypoint-initdb.d/
+
+CMD [ "mysqld" ]
